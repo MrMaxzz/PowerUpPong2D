@@ -8,6 +8,7 @@ public class PowerUpManager : MonoBehaviour
     public BallBounce ballBounce;
     public Player1 player1;
     public Player2 player2;
+    public ScoreManager scoreManager;
     public float increaseSizeMultiplayer = 2f;
     bool powerUpFunctionOnlineP1;
     bool powerUpFunctionOnlineP2;
@@ -37,12 +38,39 @@ public class PowerUpManager : MonoBehaviour
     {
         if (P1HasAimbot)
         {
-            player1.gameObject.transform.position = new Vector3(-7.5f, ballBounce.gameObject.transform.position.y,0f);
+            if (ballBounce.gameObject.transform.position.y >=3.9f)
+            {
+                player1.gameObject.transform.position = new Vector3(-7.5f, 3.9f,0f);
+            }
+
+            else if (ballBounce.gameObject.transform.position.y <= -3.9f)
+            {
+                player1.gameObject.transform.position = new Vector3(-7.5f, -3.9f, 0f);
+            }
+
+            else
+            {
+                player1.gameObject.transform.position = new Vector3(-7.5f, ballBounce.gameObject.transform.position.y, 0f);
+            }
+            
         }
 
         if (P2HasAimbot)
         {
-            player2.gameObject.transform.position = new Vector3(7.5f, ballBounce.gameObject.transform.position.y, 0f);
+            if (ballBounce.gameObject.transform.position.y >= 3.9f)
+            {
+                player2.gameObject.transform.position = new Vector3(7.5f, 3.9f, 0f);
+            }
+
+            else if (ballBounce.gameObject.transform.position.y <= -3.9f)
+            {
+                player2.gameObject.transform.position = new Vector3(7.5f, -3.9f, 0f);
+            }
+            else
+            {
+                player2.gameObject.transform.position = new Vector3(7.5f, ballBounce.gameObject.transform.position.y, 0f);
+            }
+            
         }
     }
 
@@ -51,6 +79,10 @@ public class PowerUpManager : MonoBehaviour
     {
         if (ballBounce.P1LastTouched && !powerUpFunctionOnlineP1)
         {
+            scoreManager.numOfPowerUpsP1++;
+            PlayerPrefs.SetInt("Player1NumOfPowerUps", scoreManager.numOfPowerUpsP1);
+            scoreManager.player1PowerUpsText.text = "PowerUps picked up: " + scoreManager.numOfPowerUpsP1;
+
             P1HasAimbot = true;
             P1FirstAimbot++;
             if(P1FirstAimbot == 1)
@@ -62,6 +94,10 @@ public class PowerUpManager : MonoBehaviour
 
         if (ballBounce.P2LastTouched && !powerUpFunctionOnlineP2)
         {
+            scoreManager.numOfPowerUpsP2++;
+            PlayerPrefs.SetInt("Player2NumOfPowerUps", scoreManager.numOfPowerUpsP2);
+            scoreManager.player2PowerUpsText.text = scoreManager.numOfPowerUpsP2 + " :PowerUps picked up";
+
             P2HasAimbot = true;
             P2FirstAimbot++;
             if (P2FirstAimbot == 1)
@@ -95,6 +131,10 @@ public class PowerUpManager : MonoBehaviour
     {
         if (ballBounce.P1LastTouched && !slowingP2)
         {
+            scoreManager.numOfPowerUpsP1++;
+            PlayerPrefs.SetInt("Player1NumOfPowerUps", scoreManager.numOfPowerUpsP1);
+            scoreManager.player1PowerUpsText.text = "PowerUps picked up: " + scoreManager.numOfPowerUpsP1;
+
             slowingP2 = true;
             player2.racketSpeed = player2.racketSpeed * slowDownMultiplayer;
             Invoke("NormalSpeedP2", slowDownDuration);
@@ -103,6 +143,10 @@ public class PowerUpManager : MonoBehaviour
 
         if(ballBounce.P2LastTouched && !slowingP1)
         {
+            scoreManager.numOfPowerUpsP2++;
+            PlayerPrefs.SetInt("Player2NumOfPowerUps", scoreManager.numOfPowerUpsP2);
+            scoreManager.player2PowerUpsText.text = scoreManager.numOfPowerUpsP2 + " :PowerUps picked up";
+
             slowingP1 = true;
             player1.racketSpeed = player1.racketSpeed * slowDownMultiplayer;
             Invoke("NormalSpeedP1", slowDownDuration);
@@ -133,6 +177,10 @@ public void PowerUp_Increase()
     {
         if (ballBounce.P1LastTouched && !powerUpFunctionOnlineP1)
         {
+            scoreManager.numOfPowerUpsP1++;
+            PlayerPrefs.SetInt("Player1NumOfPowerUps", scoreManager.numOfPowerUpsP1);
+            scoreManager.player1PowerUpsText.text = "PowerUps picked up: " + scoreManager.numOfPowerUpsP1;
+
             revertSizeForP1 = true;
             player1.gameObject.transform.localScale += new Vector3(0f, 1 * increaseSizeMultiplayer, 0f);
             Debug.Log("Player 1 did powerUpFunctioin");
@@ -143,6 +191,10 @@ public void PowerUp_Increase()
 
         else if (ballBounce.P2LastTouched && !powerUpFunctionOnlineP2)
         {
+            scoreManager.numOfPowerUpsP2++;
+            PlayerPrefs.SetInt("Player2NumOfPowerUps", scoreManager.numOfPowerUpsP2);
+            scoreManager.player2PowerUpsText.text = scoreManager.numOfPowerUpsP2 + " :PowerUps picked up";
+
             revertSizeForP2 = true;
             player2.gameObject.transform.localScale += new Vector3(0f, 1 * increaseSizeMultiplayer, 0f);
             Debug.Log("Player 2 did powerUpFunctioin");
@@ -158,6 +210,10 @@ public void PowerUp_Increase()
     {
         if (ballBounce.P1LastTouched)
         {
+            scoreManager.numOfPowerUpsP1++;
+            PlayerPrefs.SetInt("Player1NumOfPowerUps", scoreManager.numOfPowerUpsP1);
+            scoreManager.player1PowerUpsText.text = "PowerUps picked up: " + scoreManager.numOfPowerUpsP1;
+
             revertColorForP2 = true;
             player2.GetComponent<Renderer>().material.color = new Color(0.06603771f, 0.06603771f, 0.06603771f);
             Invoke("NoInvis", invisDuration);
@@ -166,6 +222,10 @@ public void PowerUp_Increase()
 
         else if (ballBounce.P2LastTouched)
         {
+            scoreManager.numOfPowerUpsP2++;
+            PlayerPrefs.SetInt("Player2NumOfPowerUps", scoreManager.numOfPowerUpsP2);
+            scoreManager.player2PowerUpsText.text = scoreManager.numOfPowerUpsP2 + " :PowerUps picked up";
+
             revertColorForP1 = true;
             player1.GetComponent<Renderer>().material.color = new Color(0.06603771f, 0.06603771f, 0.06603771f);
             Invoke("NoInvis", invisDuration);
@@ -194,6 +254,10 @@ public void PowerUp_Increase()
     {
         if (ballBounce.P1LastTouched && !powerUpFunctionOnlineP2)
         {
+            scoreManager.numOfPowerUpsP1++;
+            PlayerPrefs.SetInt("Player1NumOfPowerUps", scoreManager.numOfPowerUpsP1);
+            scoreManager.player1PowerUpsText.text = "PowerUps picked up: " + scoreManager.numOfPowerUpsP1;
+
             revertSizeForP2 = true;
             player2.gameObject.transform.localScale -= new Vector3(0f, 1 * decreaseSizeMultiplayer, 0f);
             Invoke("PowerUpSizeNormalP2", decreaseSizeDuration);
@@ -203,6 +267,10 @@ public void PowerUp_Increase()
 
         else if (ballBounce.P2LastTouched && !powerUpFunctionOnlineP1)
         {
+            scoreManager.numOfPowerUpsP2++;
+            PlayerPrefs.SetInt("Player2NumOfPowerUps", scoreManager.numOfPowerUpsP2);
+            scoreManager.player2PowerUpsText.text = scoreManager.numOfPowerUpsP2 + " :PowerUps picked up";
+
             revertSizeForP1 = true;
             player1.gameObject.transform.localScale -= new Vector3(0f, 1 * decreaseSizeMultiplayer, 0f);
             Invoke("PowerUpSizeNormalP1", decreaseSizeDuration);
