@@ -651,6 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40ceacd5dd0b0340afa907e46761a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UISFX: {fileID: 2796668469953083441, guid: 147fed674c1bca242b9e44bb5cb0f70f, type: 3}
 --- !u!114 &826811410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,6 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1057de6ccce14fc4d85b4aea9ada3aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UISFX: {fileID: 2796668469953083441, guid: 147fed674c1bca242b9e44bb5cb0f70f, type: 3}
 --- !u!1 &1051016547
 GameObject:
   m_ObjectHideFlags: 0

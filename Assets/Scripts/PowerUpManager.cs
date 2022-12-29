@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour
 {
+    public GameObject p1PowerUpSFX;
+    public GameObject p2PowerUpSFX;
+
     public BallBounce ballBounce;
     public Player1 player1;
     public Player2 player2;
@@ -79,6 +82,7 @@ public class PowerUpManager : MonoBehaviour
     {
         if (ballBounce.P1LastTouched && !powerUpFunctionOnlineP1)
         {
+            Instantiate(p1PowerUpSFX, transform.position, transform.rotation);
             scoreManager.numOfPowerUpsP1++;
             PlayerPrefs.SetInt("Player1NumOfPowerUps", scoreManager.numOfPowerUpsP1);
             scoreManager.player1PowerUpsText.text = "PowerUps picked up: " + scoreManager.numOfPowerUpsP1;
@@ -94,6 +98,7 @@ public class PowerUpManager : MonoBehaviour
 
         if (ballBounce.P2LastTouched && !powerUpFunctionOnlineP2)
         {
+            Instantiate(p2PowerUpSFX, transform.position, transform.rotation);
             scoreManager.numOfPowerUpsP2++;
             PlayerPrefs.SetInt("Player2NumOfPowerUps", scoreManager.numOfPowerUpsP2);
             scoreManager.player2PowerUpsText.text = scoreManager.numOfPowerUpsP2 + " :PowerUps picked up";
@@ -131,6 +136,7 @@ public class PowerUpManager : MonoBehaviour
     {
         if (ballBounce.P1LastTouched && !slowingP2)
         {
+            Instantiate(p1PowerUpSFX, transform.position, transform.rotation);
             scoreManager.numOfPowerUpsP1++;
             PlayerPrefs.SetInt("Player1NumOfPowerUps", scoreManager.numOfPowerUpsP1);
             scoreManager.player1PowerUpsText.text = "PowerUps picked up: " + scoreManager.numOfPowerUpsP1;
@@ -143,6 +149,7 @@ public class PowerUpManager : MonoBehaviour
 
         if(ballBounce.P2LastTouched && !slowingP1)
         {
+            Instantiate(p2PowerUpSFX, transform.position, transform.rotation);
             scoreManager.numOfPowerUpsP2++;
             PlayerPrefs.SetInt("Player2NumOfPowerUps", scoreManager.numOfPowerUpsP2);
             scoreManager.player2PowerUpsText.text = scoreManager.numOfPowerUpsP2 + " :PowerUps picked up";
@@ -177,6 +184,7 @@ public void PowerUp_Increase()
     {
         if (ballBounce.P1LastTouched && !powerUpFunctionOnlineP1)
         {
+            Instantiate(p1PowerUpSFX, transform.position, transform.rotation);
             scoreManager.numOfPowerUpsP1++;
             PlayerPrefs.SetInt("Player1NumOfPowerUps", scoreManager.numOfPowerUpsP1);
             scoreManager.player1PowerUpsText.text = "PowerUps picked up: " + scoreManager.numOfPowerUpsP1;
@@ -191,6 +199,7 @@ public void PowerUp_Increase()
 
         else if (ballBounce.P2LastTouched && !powerUpFunctionOnlineP2)
         {
+            Instantiate(p2PowerUpSFX, transform.position, transform.rotation);
             scoreManager.numOfPowerUpsP2++;
             PlayerPrefs.SetInt("Player2NumOfPowerUps", scoreManager.numOfPowerUpsP2);
             scoreManager.player2PowerUpsText.text = scoreManager.numOfPowerUpsP2 + " :PowerUps picked up";
@@ -210,6 +219,7 @@ public void PowerUp_Increase()
     {
         if (ballBounce.P1LastTouched)
         {
+            Instantiate(p1PowerUpSFX, transform.position, transform.rotation);
             scoreManager.numOfPowerUpsP1++;
             PlayerPrefs.SetInt("Player1NumOfPowerUps", scoreManager.numOfPowerUpsP1);
             scoreManager.player1PowerUpsText.text = "PowerUps picked up: " + scoreManager.numOfPowerUpsP1;
@@ -222,6 +232,7 @@ public void PowerUp_Increase()
 
         else if (ballBounce.P2LastTouched)
         {
+            Instantiate(p2PowerUpSFX, transform.position, transform.rotation);
             scoreManager.numOfPowerUpsP2++;
             PlayerPrefs.SetInt("Player2NumOfPowerUps", scoreManager.numOfPowerUpsP2);
             scoreManager.player2PowerUpsText.text = scoreManager.numOfPowerUpsP2 + " :PowerUps picked up";
@@ -254,6 +265,7 @@ public void PowerUp_Increase()
     {
         if (ballBounce.P1LastTouched && !powerUpFunctionOnlineP2)
         {
+            Instantiate(p1PowerUpSFX, transform.position, transform.rotation);
             scoreManager.numOfPowerUpsP1++;
             PlayerPrefs.SetInt("Player1NumOfPowerUps", scoreManager.numOfPowerUpsP1);
             scoreManager.player1PowerUpsText.text = "PowerUps picked up: " + scoreManager.numOfPowerUpsP1;
@@ -267,6 +279,7 @@ public void PowerUp_Increase()
 
         else if (ballBounce.P2LastTouched && !powerUpFunctionOnlineP1)
         {
+            Instantiate(p2PowerUpSFX, transform.position, transform.rotation);
             scoreManager.numOfPowerUpsP2++;
             PlayerPrefs.SetInt("Player2NumOfPowerUps", scoreManager.numOfPowerUpsP2);
             scoreManager.player2PowerUpsText.text = scoreManager.numOfPowerUpsP2 + " :PowerUps picked up";

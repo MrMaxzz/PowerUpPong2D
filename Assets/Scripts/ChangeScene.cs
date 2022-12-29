@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class ChangeScene : MonoBehaviour
 {
-    private void Awake()
-    {
-        Time.timeScale = 1;
-    }
+    public GameObject UISFX;
     public void MoveToScene(int sceneID)
     {
+        Instantiate(UISFX, transform.position, transform.rotation);
         SceneManager.LoadScene(sceneID);
+       
     }
 
     public void Quit()
     {
+        Instantiate(UISFX, transform.position, transform.rotation);
         Application.Quit();
     }
 }

@@ -75,6 +75,7 @@ public class BallBounce : MonoBehaviour
     {
         if(collision.gameObject.tag == "PowerUp")
         {
+  
             if (collision.gameObject.name == "IncreaseSize(Clone)")
             {
                 Debug.Log("Kolliderade med IncreaseSize");

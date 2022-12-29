@@ -79,7 +79,7 @@ public class ScoreManager : MonoBehaviour
             player1MatchesWon++;
             PlayerPrefs.SetInt("Player1MatchesWon", player1MatchesWon);
             player1MatchWonText.text = "Matches won: " + player1MatchesWon.ToString();
-            StartCoroutine("NewScene");
+            StartCoroutine(NewScene(1));
             Time.timeScale = 0;
 
         }
@@ -89,14 +89,14 @@ public class ScoreManager : MonoBehaviour
             player2MatchesWon++;
             PlayerPrefs.SetInt("Player2MatchesWon", player2MatchesWon);
             player2MatchWonText.text = player2MatchesWon.ToString() + " :Matches won";
-            StartCoroutine("NewScene");
+            StartCoroutine(NewScene(1));
             Time.timeScale = 0;
 
         }
     }
-    IEnumerator NewScene()
+    IEnumerator NewScene(float waitTime)
     {
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(waitTime);
         SceneManager.LoadScene(2);
         Time.timeScale = 1;
     }

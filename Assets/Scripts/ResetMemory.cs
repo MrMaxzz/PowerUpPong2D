@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ResetMemory : MonoBehaviour
 {
+    public GameObject UISFX;
     public void ResetBrain()
     {
+        Instantiate(UISFX,transform.position,transform.rotation);
         PlayerPrefs.DeleteAll();
     }
 }
